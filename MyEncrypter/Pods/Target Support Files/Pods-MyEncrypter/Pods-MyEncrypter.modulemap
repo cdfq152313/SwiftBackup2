@@ -1,0 +1,6 @@
+framework module Pods_MyEncrypter {
+  umbrella header "Pods-MyEncrypter-umbrella.h"
+
+  export *
+  module * { export * }
+}
