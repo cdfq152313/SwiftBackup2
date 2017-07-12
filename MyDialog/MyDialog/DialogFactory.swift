@@ -119,4 +119,107 @@ class DialogFactory{
         
         return alert
     }
+    
+    public static func startPromotion(product:Product,countDown:Int)->CountDownUIAlertControllerHelper{
+        let alert = UIAlertController(title: "\n\n\n\n\n\n\n", message: nil, preferredStyle: .alert)
+        
+        // image view
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "check"))
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        alert.view.addSubview(imageView)
+        
+        // label 1
+        let label1 = UILabel()
+        label1.text = "完成！正在向旅客推銷"
+        label1.font = label1.font.withSize(13)
+        label1.translatesAutoresizingMaskIntoConstraints = false
+        alert.view.addSubview(label1)
+        
+        // label 2
+        let label2 = UILabel()
+        label2.text = "\(product.title!)(原價\(product.price!))"
+        label2.font = label2.font.withSize(13)
+        label2.translatesAutoresizingMaskIntoConstraints = false
+        alert.view.addSubview(label2)
+        
+        // countdown label
+        let countDownLabel = UILabel()
+        countDownLabel.font = countDownLabel.font.withSize(13)
+        countDownLabel.translatesAutoresizingMaskIntoConstraints = false
+        alert.view.addSubview(countDownLabel)
+        
+        // cancel
+        let cancelAction = UIAlertAction(title: "拒絕銷售", style: .default, handler: nil)
+        alert.addAction(cancelAction)
+        
+        // image Constraint
+        imageView.widthAnchor.constraint(equalToConstant: 50)
+        imageView.heightAnchor.constraint(equalToConstant: 50)
+        imageView.centerYAnchor.constraint(equalTo: alert.view.centerYAnchor, constant: -40).isActive = true
+        imageView.centerXAnchor.constraint(equalTo: alert.view.centerXAnchor).isActive = true
+        
+        // label 1 constranit
+        label1.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20).isActive = true
+        label1.centerXAnchor.constraint(equalTo: alert.view.centerXAnchor).isActive = true
+        
+        // label 2 constranit
+        label2.topAnchor.constraint(equalTo: label1.bottomAnchor).isActive = true
+        label2.centerXAnchor.constraint(equalTo: alert.view.centerXAnchor).isActive = true
+        
+        // countDown constraint
+        countDownLabel.topAnchor.constraint(equalTo: label2.bottomAnchor, constant:10).isActive = true
+        countDownLabel.textColor = UIColor(red:0.63, green:0.63, blue:0.63, alpha:1.0)
+        countDownLabel.centerXAnchor.constraint(equalTo: alert.view.centerXAnchor).isActive = true
+        
+        let helper = CountDownUIAlertControllerHelper(controller: alert, countDownLabel: countDownLabel, countDown:countDown)
+        return helper
+    }
+    
+    public static func promotionTimeout()->UIAlertController{
+        let alert = UIAlertController(title: nil, message: "\n\n\n\n\n", preferredStyle: .alert)
+        
+        return alert
+    }
+    
+    public static func promotioning()->UIAlertController{
+        let alert = UIAlertController(title: nil, message: "\n\n\n\n\n", preferredStyle: .alert)
+        
+        return alert
+    }
+    
+    public static func promotionSuccessfully()->UIAlertController{
+        let alert = UIAlertController(title: nil, message: "\n\n\n\n\n", preferredStyle: .alert)
+        
+        return alert
+    }
 }
+
+
+public class CountDownUIAlertControllerHelper{
+    let controller:UIAlertController
+    
+    private let countDownLabel:UILabel
+    private var countDown:Int
+    
+    init(controller:UIAlertController, countDownLabel:UILabel, countDown:Int) {
+        self.controller = controller
+        self.countDownLabel = countDownLabel
+        self.countDown = countDown
+        
+        countDownLabel.text = "\(countDown) 秒內將自動失效"
+    }
+    
+    public func update(){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+            self.countDown -= 1
+            self.countDownLabel.text = "\(self.countDown) 秒內將自動失效"
+            if self.countDown > 0{
+                self.update()
+            } else{
+                self.controller.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+}
+
