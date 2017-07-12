@@ -39,10 +39,27 @@ class AESHelper {
         guard let data = Data(base64Encoded: content, options: NSData.Base64DecodingOptions(rawValue: 0)) else {
             return nil
         }
-        let dec = try AES(key: key, iv: iv, blockMode:.CBC, padding:PKCS7()).decrypt(data)
-        let decData = Data(bytes: dec, count: Int(dec.count))
-        let result = NSString(data: decData, encoding: String.Encoding.utf8.rawValue)
-        return String(result!)
+        
+        do{
+            let aes = try AES(key: key, iv: iv, blockMode:.CBC, padding:PKCS7())
+            let dec = try aes.decrypt(data)
+            let decData = Data(bytes: dec, count: Int(dec.count))
+            if let result = String(data: decData, encoding: .utf8){
+                return result
+            }else{
+                throw DecryptError()
+            }
+        } catch {
+            print("catch")
+            print(error)
+            throw DecryptError()
+        }
     }
     
+}
+
+class DecryptError : Error{
+    init(){
+        print("Decrypt Error")
+    }
 }

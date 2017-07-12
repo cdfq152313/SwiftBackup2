@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MyDialog" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0mw-Vb-YXh">
+                                <rect key="frame" x="172.5" y="318.5" width="30" height="30"/>
+                                <state key="normal" title="One"/>
+                                <connections>
+                                    <action selector="oneClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FrM-2U-Y83"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lFN-n2-i9R">
+                                <rect key="frame" x="166.5" y="277.5" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ja8-AB-fiN">
+                                <rect key="frame" x="172.5" y="368.5" width="30" height="30"/>
+                                <state key="normal" title="Two"/>
+                                <connections>
+                                    <action selector="twoClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eQG-p6-ZmW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cUi-hx-8xQ">
+                                <rect key="frame" x="167.5" y="414" width="40" height="30"/>
+                                <state key="normal" title="Three"/>
+                                <connections>
+                                    <action selector="threeClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mZ0-tQ-L4o"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="cUi-hx-8xQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="MSx-ej-j1b"/>
+                            <constraint firstItem="cUi-hx-8xQ" firstAttribute="top" secondItem="Ja8-AB-fiN" secondAttribute="bottom" constant="15.5" id="Okx-kr-mIV"/>
+                            <constraint firstItem="Ja8-AB-fiN" firstAttribute="top" secondItem="0mw-Vb-YXh" secondAttribute="bottom" constant="20" id="Qcc-Kx-72h"/>
+                            <constraint firstItem="Ja8-AB-fiN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dCc-Mb-sYQ"/>
+                            <constraint firstItem="0mw-Vb-YXh" firstAttribute="top" secondItem="lFN-n2-i9R" secondAttribute="bottom" constant="20" id="h28-tV-zV9"/>
+                            <constraint firstItem="0mw-Vb-YXh" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="osU-l5-eSb"/>
+                            <constraint firstItem="0mw-Vb-YXh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="skd-gX-arj"/>
+                            <constraint firstItem="lFN-n2-i9R" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ygR-Bi-J0M"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="label" destination="lFN-n2-i9R" id="fUN-nY-YDg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
